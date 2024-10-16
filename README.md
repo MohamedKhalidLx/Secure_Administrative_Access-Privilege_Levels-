@@ -2,6 +2,8 @@
 
 ## Overview
 This project configures a network with three routers connected via OSPF (Open Shortest Path First). The routers are secured with encrypted passwords, SSH access, and Telnet for remote management. Additionally, the configuration implements enhanced password security using the Scrypt hashing algorithm for user authentication.
+![image](https://github.com/user-attachments/assets/5d12eed1-ca80-43d7-8620-b0dba847c1fd)
+
 
 ## Topology
 - **Routers**: R1, R2, R3 (Configured with OSPF for routing and secured with SSH and Telnet access)
@@ -18,12 +20,17 @@ This project configures a network with three routers connected via OSPF (Open Sh
 - Use RSA key pairs and enforce SSHv2 for encrypted communication.
 
 ## Network Details:
-
 ### Addressing Table:
 ![Addressing Table](https://github.com/user-attachments/assets/d9f2a73f-1c4e-4a62-b543-ca20d710df69)
 
 ### VLAN Table:
 N/A (This configuration is focused on routing without VLAN segmentation.)
+
+## Network Topology
+Refer to the [Network_Topology](Configure20%Secure20%Administrative20%Access20%(Privileg20%Level).pkt) for a visual representation of the lab setup.
+- **Users**: admin, user01
+- **Password**: admin12345
+- **Privilege level**: admin12345
 
 ## Configuration Files:
 - **Router 1 (R1)**, **Router 2 (R2)**, and **Router 3 (R3)** configurations are available in the [Configuration File](Configuration20%File20%(Privileg20%Level).txt).
