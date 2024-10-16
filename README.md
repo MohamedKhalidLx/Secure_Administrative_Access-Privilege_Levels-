@@ -27,7 +27,7 @@ This project configures a network with three routers connected via OSPF (Open Sh
 N/A (This configuration is focused on routing without VLAN segmentation.)
 
 ## Network Topology
-Refer to the [Network_Topology](Configure20%Secure20%Administrative20%Access20%(Privileg20%Level).pkt) for a visual representation of the lab setup.
+Refer to the `Configure Secure Administrative Access (Privileg Level).pkt` for a visual representation of the lab setup.
 - **Users**: admin, user01
 - **Password**: admin12345
 - **Privilege level**: admin12345
