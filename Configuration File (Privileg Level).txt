@@ -1,0 +1,295 @@
+----R1----
+<Change Hostname>
+enable
+configure terminal
+hostname R1
+
+<Configure interface IP addresses>
+interface G0/0/0
+ip address 10.1.1.1 255.255.255.252
+no shutdown
+interface G0/0/1
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+
+<Disable DNS lookup for unrecognized commands>
+no ip domain-lookup
+
+---Configure OSPFv2 (IPv4)-----
+router ospf 1
+passive-interface G0/0/1		<stops both outgoing and incoming routing updates>
+network 192.168.1.0 0.0.0.255 area 0
+network 10.1.1.0 0.0.0.3 area 0
+exit
+
+<Configure secret password on privileged mode using type 9 hashing algorithm>
+enable algorithm-type scrypt secret admin12345
+
+<Minimum password length of 10 for user accounts>
+security passwords min-length 10
+
+<Secure Console port>
+line console 0
+password admin12345
+exec-timeout 5 0
+login
+logging synchronous
+exit
+
+<Configure a password for the AUX port for router R1>
+line aux 0
+password admin12345
+exec-timeout 5 0
+login
+exit
+
+<Activate 5 virtual ports, secure them and enable Telnet>
+line vty 0 4
+password admin12345 
+exec-timeout 5 0
+transport input telnet
+login
+exit
+
+<Encrypt all passwords>
+service password-encryption
+
+<Warning Message>
+banner motd $Unauthorized access strictly prohibited! R1$
+
+----Part 3: Enhanced User Pass Security----
+enable
+configure terminal
+username user01 algorithm-type scrypt secret admin12345
+
+<Test the new account by logging in to the console>
+line console 0
+login local
+exit
+
+----Part 4: Configure SSH on R1----
+enable
+Configure terminal
+ip domain-name netsec.com 	<Create a Domain name>
+
+<Configure user and pass for privilege user for SSH>
+username admin privilege 15 algorithm-type scrypt secret admin12345
+
+<Configure privilege level 15>
+line vty 0 4
+privilege level 15
+login local
+transport input ssh
+exit
+
+<Erase existing key pairs on the router>
+crypto key zeroize rsa
+
+<Generate the RSA encryption key pair for the router>
+crypto key generate rsa
+enter ---> 1024
+
+<Force user of SSHv2>
+ip ssh version 2
+
+<Configure SSH timeouts and authentication parameters>
+ip ssh time-out 90  		<by default 120>
+ip ssh authentication-retries 2
+
+----R2----
+<Change Hostname>
+enable
+configure terminal
+hostname R2
+
+<Configure interface IP addresses>
+interface G0/0/0
+ip address 10.1.1.2 255.255.255.252
+no shutdown
+interface G0/0/1
+ip address 10.2.2.2 255.255.255.252
+no shutdown
+exit
+
+<Disable DNS lookup for unrecognized commands>
+no ip domain-lookup
+
+---Configure OSPFv2 (IPv4)-----
+router ospf 1
+network 10.1.1.0 0.0.0.3 area 0
+network 10.2.2.0 0.0.0.3 area 0
+exit
+
+<Configure secret password on privileged mode using type 9 hashing algorithm>
+enable algorithm-type scrypt secret admin12345
+
+<Minimum password length of 10 for user accounts>
+security passwords min-length 10
+
+<Secure Console port>
+line console 0
+password admin12345
+exec-timeout 5 0
+login
+logging synchronous
+exit
+
+<Configure a password for the AUX port for router R2>
+line aux 0
+password admin12345
+exec-timeout 5 0
+login
+exit
+
+<Activate 5 virtual ports, secure them and enable Telnet>
+line vty 0 4
+password admin12345 
+exec-timeout 5 0
+transport input telnet
+login
+exit
+
+<Encrypt all passwords>
+service password-encryption
+
+<Warning Message>
+banner motd $Unauthorized access strictly prohibited! R2$
+
+----Part 3: Enhanced User Pass Security----
+enable
+configure terminal
+username user01 algorithm-type scrypt secret admin12345
+
+<Test the new account by logging in to the console>
+line console 0
+login local
+exit
+
+----Part 4: Configure SSH on R2----
+enable
+Configure terminal
+ip domain-name netsec.com 	<Create a Domain name>
+
+<Configure user and pass for privilege user for SSH>
+username admin privilege 15 algorithm-type scrypt secret admin12345
+
+<Configure privilege level 15>
+line vty 0 4
+privilege level 15
+login local
+transport input ssh
+exit
+
+<Erase existing key pairs on the router>
+crypto key zeroize rsa
+
+<Generate the RSA encryption key pair for the router>
+crypto key generate rsa
+enter ---> 1024
+
+<Force user of SSHv2>
+ip ssh version 2
+
+<Configure SSH timeouts and authentication parameters>
+ip ssh time-out 90  		<by default 120>
+ip ssh authentication-retries 2
+
+----R3----
+<Change Hostname>
+enable
+configure terminal
+hostname R3
+
+<Configure interface IP addresses>
+interface G0/0/0
+ip address 10.2.2.1 255.255.255.252
+no shutdown
+interface G0/0/1
+ip address 192.168.3.1 255.255.255.0
+no shutdown
+exit
+
+<Disable DNS lookup for unrecognized commands>
+no ip domain-lookup
+
+---Configure OSPFv2 (IPv4)-----
+router ospf 1
+passive-interface G0/0/1		<Stops both outgoing and incoming routing updates>
+network 10.2.2.0 0.0.0.3 area 0
+network 192.168.3.0 0.0.0.255 area 0
+exit
+
+<Configure secret password on privileged mode using type 9 hashing algorithm>
+enable algorithm-type scrypt secret admin12345
+
+<Minimum password length of 10 for user accounts>
+security passwords min-length 10
+
+<Secure Console port>
+line console 0
+password admin12345
+exec-timeout 5 0
+login
+logging synchronous
+exit
+
+<Configure a password for the AUX port for router R3>
+line aux 0
+password admin12345
+exec-timeout 5 0
+login
+exit
+
+<Activate 5 virtual ports, secure them and enable Telnet>
+line vty 0 4
+password admin12345 
+exec-timeout 5 0
+transport input telnet
+login
+exit
+
+<Encrypt all passwords>
+service password-encryption
+
+<Warning Message>
+banner motd $Unauthorized access strictly prohibited! R3$
+
+----Part 3: Enhanced User Pass Security----
+enable
+configure terminal
+username user01 algorithm-type scrypt secret admin12345
+
+<Test the new account by logging in to the console>
+line console 0
+login local
+exit
+
+----Part 4: Configure SSH on R3----
+enable
+Configure terminal
+ip domain-name netsec.com 	<Create a Domain name>
+
+<Configure user and pass for privilege user for SSH>
+username admin privilege 15 algorithm-type scrypt secret admin12345
+
+<Configure privilege level 15>
+line vty 0 4
+privilege level 15
+login local
+transport input ssh
+exit
+
+<Erase existing key pairs on the router>
+crypto key zeroize rsa
+
+<Generate the RSA encryption key pair for the router>
+crypto key generate rsa
+enter ---> 1024
+
+<Force user of SSHv2>
+ip ssh version 2
+
+<Configure SSH timeouts and authentication parameters>
+ip ssh time-out 90  		<by default 120>
+ip ssh authentication-retries 2
