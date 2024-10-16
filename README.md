@@ -33,7 +33,7 @@ Refer to the `Configure Secure Administrative Access (Privileg Level).pkt` for a
 - **Privilege level**: admin12345
 
 ## Configuration Files:
-- **Router 1 (R1)**, **Router 2 (R2)**, and **Router 3 (R3)** configurations are available in the [Configuration File](Configuration20%File20%(Privileg20%Level).txt).
+- **Router 1 (R1)**, **Router 2 (R2)**, and **Router 3 (R3)** configurations are available in the `Configuration File (Privileg Level).txt`.
 
 ## Steps to Implement:
 1. **Configure OSPF** on all three routers to enable dynamic routing between networks.
