@@ -26,7 +26,7 @@ This project configures a network with three routers connected via OSPF (Open Sh
 N/A (This configuration is focused on routing without VLAN segmentation.)
 
 ## Configuration Files:
-- **Router 1 (R1)**, **Router 2 (R2)**, and **Router 3 (R3)** configurations are available in the `Configuration%20File%20(Privileg%20Level).txt` file.
+- **Router 1 (R1)**, **Router 2 (R2)**, and **Router 3 (R3)** configurations are available in the [Configuration File](Configuration20%File20%(Privileg20%Level).txt).
 
 ## Steps to Implement:
 1. **Configure OSPF** on all three routers to enable dynamic routing between networks.
@@ -39,7 +39,10 @@ N/A (This configuration is focused on routing without VLAN segmentation.)
 6. **Test OSPF routing** by verifying routes in each router's routing table.
 7. **Test SSH and Telnet access** to ensure secure remote management is functional.
 
-## How to Use:
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/YourUsername/OSPF-Security-Network-Configuration.git
+## Contact
+For any questions or feedback, please reach out to:
+- **Name**: Mohamed Khaled Mahmoud Sayed
+- **Email**: Mo7ammad244@gmail.com
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
